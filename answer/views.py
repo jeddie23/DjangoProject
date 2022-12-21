@@ -22,10 +22,11 @@ def answer_list(request):
     words_str = words_str.strip(',')
     print(words_str)
 
+
     sql = "SELECT T1.id, question, answer, img \
             FROM questionanswer as T1  join \
-            (SELECT qid, count(qid) as cnt FROM wordquestion as T2 \
-            where word in (" + words_str + ") group by T2.qid limit 1) as T3 where T1.id = qid"
+            (SELECT qid, count(DISTINCT word) as cnt FROM wordquestion as T2 \
+            WHERE word IN (" + words_str + ") GROUP BY T2.qid ORDER BY cnt DESC limit 1) as T3 where T1.id = qid"
     print(sql)
     with connection.cursor() as cursor:
         cursor.execute(sql)
