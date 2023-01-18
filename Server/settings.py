@@ -78,12 +78,12 @@ WSGI_APPLICATION = "Server.wsgi.application"
 DATABASES = {
     "default": {
         'ENGINE': 'django.db.backends.mysql',    # 数据库引擎
-        'NAME': 'mydb', # 数据库名称
-        'HOST': '106.14.143.46', # 数据库地址，本机 ip 地址 127.0.0.1 
+        'NAME': 'ai_ecnucpp_cn', # 数据库名称
+        'HOST': '106.14.143.46', # 数据库地址，本机 ip 地址 127.0.0.1
         # 'HOST': '127.0.0.1',
         'PORT': 3306, # 端口 
-        'USER': 'root',  # 数据库用户名
-        'PASSWORD': '5bRqjeQc4Wx4VcPD', # 数据库密码
+        'USER': 'ai_ecnucpp_cn',  # 数据库用户名
+        'PASSWORD': 'DwfWFpSb64EWY4mr', # 数据库密码
     }
 }
 
