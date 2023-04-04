@@ -42,7 +42,7 @@ def answer_list(request):
     words_str = words_str.strip(',')
 
 
-    sql = "SELECT T1.id, question, answer, img \
+    sql = "SELECT T1.id, question, answer, img, logo, pre \
             FROM questionanswer as T1  join \
             (SELECT qid, count(word) as cnt FROM wordquestion as T2 \
             WHERE word IN (" + words_str + ") GROUP BY T2.qid ORDER BY cnt DESC limit 1) as T3 where T1.id = qid"
@@ -54,6 +54,6 @@ def answer_list(request):
         # cursor.execute("select * from questionanswer limit 10")
         list = cursor.fetchall()
     
-    response = [{"id": list[0][0], "question":list[0][1], "answer":list[0][2], "img":list[0][3]}]
+    response = [{"id": list[0][0], "question":list[0][1], "answer":list[0][2], "img":list[0][3], "logo": list[0][4], "pre": list[0][5]}]
     
     return JsonResponse(response, safe=False, json_dumps_params={"ensure_ascii":False})
